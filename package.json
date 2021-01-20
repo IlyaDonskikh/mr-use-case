@@ -1,0 +1,16 @@
+{
+  "name": "mr-use-case",
+  "version": "0.5.0",
+  "description": "Use cases layer for smooth and transaparent development.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "usecase",
+    "case"
+  ],
+  "author": "Ilia Donskikh",
+  "license": "ISC"
+}
