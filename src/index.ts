@@ -12,14 +12,17 @@ interface MrUseCaseInterface<T, R> {
   call(params: T): Promise<R>;
 }
 
-export function MrUseCase<T, R>(): MrUseCaseInterface<T, R> {
+export function MrUseCase<T, R>(
+  { errorsBuilder }: { errorsBuilder: typeof MrError } = {
+    errorsBuilder: MrError,
+  },
+): MrUseCaseInterface<T, R> {
   return class BaseUseCase {
     [key: string]: any;
 
     request: T;
     response: R;
     errors: MrError;
-    protected errorsBuilder = MrError;
 
     constructor(params: T) {
       if (typeof params != 'object') {
@@ -47,7 +50,7 @@ export function MrUseCase<T, R>(): MrUseCaseInterface<T, R> {
     }
 
     private async call() {
-      this.errors = new this.errorsBuilder({
+      this.errors = new errorsBuilder({
         localePath: this.buildLocalePath(),
       });
 
