@@ -1,6 +1,6 @@
 import { IntegerSquareCase } from './samples/square.case';
 
-describe.only('MrUseCase', () => {
+describe('MrUseCase', () => {
   test('works', async () => {
     const value = 3;
     const { valueSquare } = await IntegerSquareCase.call({ value });
