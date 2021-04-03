@@ -1,6 +1,6 @@
 {
   "name": "mr-use-case",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Use cases layer for smooth and transparent development.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -36,7 +36,7 @@
     "test": "tests"
   },
   "dependencies": {
-    "mr-error": "^0.6.1"
+    "mr-error": "^0.7.0"
   },
   "repository": {
     "type": "git",
