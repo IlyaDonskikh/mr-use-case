@@ -3,9 +3,9 @@ import { IntegerSquareCase } from './samples/square.case';
 describe('MrUseCase', () => {
   test('works', async () => {
     const value = 3;
-    const { valueSquare } = await IntegerSquareCase.call({ value });
+    const { valueSquared } = await IntegerSquareCase.call({ value });
 
-    expect(valueSquare).toEqual(value * value);
+    expect(valueSquared).toEqual(value * value);
   });
 
   describe('when value is not integer', () => {

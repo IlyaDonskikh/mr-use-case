@@ -5,23 +5,25 @@ class Request {
 }
 
 class Response {
-  valueSquare: number;
+  valueSquared: number;
 }
 
 export class IntegerSquareCase extends MrUseCase<Request, Response>() {
   protected async process() {
     await this.validate();
 
-    const value = this.request.value;
+    const valueSquared = this.squareValue({ value: this.request.value });
 
-    this.response = {
-      valueSquare: value * value,
-    };
+    this.response = { valueSquared };
   }
 
   protected async checks() {
     if (!Number.isInteger(this.request.value)) {
       this.errors.add('value', 'format');
     }
+  }
+
+  private squareValue({ value }: { value: number }) {
+    return value * value;
   }
 }
