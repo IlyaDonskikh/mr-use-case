@@ -1,7 +1,7 @@
 {
   "name": "mr-use-case",
-  "version": "0.6.2",
-  "description": "Use cases layer for smooth and transparent development.",
+  "version": "0.6.3",
+  "description": "A perfect way to wrap your business logic fast and properly.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
