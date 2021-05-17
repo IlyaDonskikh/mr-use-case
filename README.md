@@ -48,7 +48,7 @@ export function UseCase<T, R>() {
 }
 ```
 
-Read more about it on [MrError page](https://github.com/IlyaDonskikh/mr-error).
+Read more about it on [Mr.Error page](https://github.com/IlyaDonskikh/mr-error).
 
 ## Overview
 
@@ -147,7 +147,7 @@ try {
 }
 ```
 
-In this scenario our use case throws an exception containing all errors that were caught by the validation process. You may read more the errors format at [MrError page](https://github.com/IlyaDonskikh/mr-error).
+In this scenario our use case throws an exception containing all errors that were caught by the validation process. You may read more about the errors format at [Mr.Error page](https://github.com/IlyaDonskikh/mr-error).
 
 Let's make a conclusion.
 
