@@ -1,6 +1,6 @@
 {
   "name": "mr-use-case",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "description": "A perfect way to wrap your business logic fast and properly.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -36,7 +36,7 @@
     "test": "tests"
   },
   "dependencies": {
-    "mr-error": "^0.7.0"
+    "mr-error": "^0.7.1"
   },
   "repository": {
     "type": "git",
