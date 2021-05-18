@@ -2,7 +2,7 @@
 
 ![Node.js CI Tests](https://github.com/IlyaDonskikh/mr-use-case/actions/workflows/node.js.yml/badge.svg?branch=master)
 
-A perfect way to wrap your business logic fast and properly.
+The perfect way to wrap your business logic fast and properly.
 
 <img width="200" alt="Mr.UseCase" src="https://user-images.githubusercontent.com/3100222/118412068-9bcf2a80-b6a0-11eb-8977-98c66c165052.png">
 
@@ -48,7 +48,7 @@ export function UseCase<T, R>() {
 }
 ```
 
-Read more about it on [Mr.Error page](https://github.com/IlyaDonskikh/mr-error).
+Read more about it on [🥞 Mr.Error page](https://github.com/IlyaDonskikh/mr-error).
 
 ## Overview
 
@@ -147,11 +147,11 @@ try {
 }
 ```
 
-In this scenario our use case throws an exception containing all errors that were caught by the validation process. You may read more about the errors format at [Mr.Error page](https://github.com/IlyaDonskikh/mr-error).
+In this scenario our use case throws an exception containing all errors that were caught by the validation process. You may read more about the errors format at [🥞 Mr.Error page](https://github.com/IlyaDonskikh/mr-error).
 
 Let's make a conclusion.
 
-> ⚠️ At this moment you probably would like to see an integration of the module to something more ready to use. And specifically for this purpose [🐨Mr.Koa boilerplate](https://github.com/IlyaDonskikh/mrkoa) exists.
+> ⚠️ At this moment you probably would like to see an integration of the module to something more ready to use. And specifically for this purpose [🐨 Mr.Koa boilerplate](https://github.com/IlyaDonskikh/mrkoa) exists.
 
 ## Conclusion
 
