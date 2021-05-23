@@ -1,7 +1,7 @@
 import { MrError } from 'mr-error';
 
 // have to define interface because declaration option is true
-interface MrUseCaseInterface<T, R> {
+export interface MrUseCaseInterface<T, R> {
   new (params: T): {
     [key: string]: any;
     request: T;
