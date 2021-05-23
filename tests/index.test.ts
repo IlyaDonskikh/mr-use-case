@@ -8,8 +8,20 @@ describe('MrUseCase', () => {
     expect(valueSquared).toEqual(value * value);
   });
 
+  describe('when value is undefined', () => {
+    it('reject with value presence error', async () => {
+      const value = undefined;
+
+      const casePromise = IntegerSquareCase.call({ value });
+
+      await expect(casePromise).rejects.toMatchObject({
+        errors: { value: ['presence'] },
+      });
+    });
+  });
+
   describe('when value is not integer', () => {
-    it('reject with password confirmation error', async () => {
+    it('reject with value format error', async () => {
       const value = 3.2;
 
       const casePromise = IntegerSquareCase.call({ value });

@@ -1,7 +1,7 @@
 import { MrUseCase } from '../../src';
 
 class Request {
-  value: number;
+  value?: number;
 }
 
 class Response {
@@ -9,18 +9,28 @@ class Response {
 }
 
 export class IntegerSquareCase extends MrUseCase<Request, Response>() {
+  private value: number;
+
   protected async process() {
     await this.validate();
 
-    const valueSquared = this.squareValue({ value: this.request.value });
+    const valueSquared = this.squareValue({ value: this.value });
 
     this.response = { valueSquared };
   }
 
   protected async checks() {
+    if (!this.request.value) {
+      this.errors.add('value', 'presence');
+
+      return;
+    }
+
     if (!Number.isInteger(this.request.value)) {
       this.errors.add('value', 'format');
     }
+
+    this.value = this.request.value;
   }
 
   private squareValue({ value }: { value: number }) {

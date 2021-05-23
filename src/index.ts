@@ -3,7 +3,6 @@ import { MrError } from 'mr-error';
 // have to define interface because declaration option is true
 export interface MrUseCaseInterface<T, R> {
   new (params: T): {
-    [key: string]: any;
     request: T;
     response: R;
     errors: MrError;
@@ -18,8 +17,6 @@ export function MrUseCase<T, R>(
   },
 ): MrUseCaseInterface<T, R> {
   return class BaseUseCase {
-    [key: string]: any;
-
     request: T;
     response: R;
     errors: MrError;
@@ -70,5 +67,8 @@ export function MrUseCase<T, R>(
     private isValid() {
       return Object.keys(this.errors.errors).length === 0;
     }
+
+    protected async checks() {}
+    protected async process() {}
   };
 }
