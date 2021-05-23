@@ -1,4 +1,5 @@
-import { IntegerSquareCase } from './samples/square.case';
+import { IntegerSquareCase } from './samples/integerSquare.case';
+import { StringPassCase } from './samples/stringPass.case';
 
 describe('MrUseCase', () => {
   test('works', async () => {
@@ -6,6 +7,18 @@ describe('MrUseCase', () => {
     const { valueSquared } = await IntegerSquareCase.call({ value });
 
     expect(valueSquared).toEqual(value * value);
+  });
+
+  describe.only('when not an object passed', () => {
+    it('reject with value presence error', async () => {
+      const value = 'hello';
+
+      const useCase = () => {
+        StringPassCase.call(value);
+      };
+
+      expect(useCase).toThrow(new Error());
+    });
   });
 
   describe('when value is undefined', () => {

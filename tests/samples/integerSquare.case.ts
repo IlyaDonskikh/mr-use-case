@@ -1,10 +1,10 @@
 import { MrUseCase } from '../../src';
 
-class Request {
+interface Request {
   value?: number;
 }
 
-class Response {
+interface Response {
   valueSquared: number;
 }
 
