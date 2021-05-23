@@ -9,7 +9,7 @@ describe('MrUseCase', () => {
     expect(valueSquared).toEqual(value * value);
   });
 
-  describe.only('when not an object passed', () => {
+  describe('when not an object passed', () => {
     it('reject with value presence error', async () => {
       const value = 'hello';
 
