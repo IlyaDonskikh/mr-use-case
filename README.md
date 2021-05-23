@@ -69,7 +69,7 @@ interface Response {
 
 export class UserCreateCase extends MrUseCase<Request, Response>() {
   private position?: UserPosition;
-  private validatedPosition: UserPosition;
+  private positionValidated: UserPosition;
 
   // process
 
@@ -80,7 +80,7 @@ export class UserCreateCase extends MrUseCase<Request, Response>() {
 
     const user = await User.create({
       email: this.request.email,
-      positionId: this.validatedPosition.id,
+      positionId: this.positionValidated.id,
     });
 
     this.response = { user };
@@ -103,7 +103,7 @@ export class UserCreateCase extends MrUseCase<Request, Response>() {
       return;
     }
 
-    this.validatedPosition = this.position;
+    this.positionValidated = this.position;
   }
 
   private async assignVariables() {
