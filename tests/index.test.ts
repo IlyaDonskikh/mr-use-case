@@ -10,14 +10,14 @@ describe('MrUseCase', () => {
   });
 
   describe('when not an object passed', () => {
-    it('reject with value presence error', async () => {
+    it('throw an error', async () => {
       const value = 'hello';
 
       const useCase = () => {
         StringPassCase.call(value);
       };
 
-      expect(useCase).toThrow(new Error());
+      expect(useCase).toThrow(new Error('Object or null must be passed'));
     });
   });
 

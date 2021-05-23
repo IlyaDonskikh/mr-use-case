@@ -23,7 +23,7 @@ export function MrUseCase<T, R>(
 
     constructor(params: T) {
       if (typeof params != 'object') {
-        throw new Error();
+        throw new Error('Object or null must be passed');
       }
 
       this.request = params;
