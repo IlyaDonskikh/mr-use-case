@@ -8,31 +8,27 @@ export interface MrUseCaseInterface<T, R> {
     errors: MrError;
     validate(): Promise<void>;
   };
-  call(params: T): Promise<R>;
+  call(...params: T extends object ? [T] : [undefined?]): Promise<R>;
 }
 
-export function MrUseCase<T, R>(
+export function MrUseCase<T extends object | null, R extends object | null>(
   { errorsBuilder }: { errorsBuilder: typeof MrError } = {
     errorsBuilder: MrError,
   },
 ): MrUseCaseInterface<T, R> {
   return class BaseUseCase {
-    request: T;
-    response: R;
+    request: T = null as T;
+    response: R = null as R;
     errors: MrError;
 
-    constructor(params: T) {
-      if (typeof params != 'object') {
-        throw new Error('Object or null must be passed');
-      }
-
+    constructor(params: T = {} as T) {
       this.request = params;
     }
 
-    static call(params: T) {
-      const instance = new this(params).call();
+    static call(params: T = {} as T) {
+      const response = new this(params).call();
 
-      return instance;
+      return response;
     }
 
     // private
