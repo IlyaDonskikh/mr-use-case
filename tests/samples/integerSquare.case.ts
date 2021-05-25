@@ -1,26 +1,36 @@
 import { MrUseCase } from '../../src';
 
-class Request {
-  value: number;
+interface Request {
+  value?: number;
 }
 
-class Response {
+interface Response {
   valueSquared: number;
 }
 
 export class IntegerSquareCase extends MrUseCase<Request, Response>() {
-  protected async process() {
+  private value: number;
+
+  async process() {
     await this.validate();
 
-    const valueSquared = this.squareValue({ value: this.request.value });
+    const valueSquared = this.squareValue({ value: this.value });
 
-    this.response = { valueSquared };
+    return { valueSquared };
   }
 
   protected async checks() {
+    if (!this.request.value) {
+      this.errors.add('value', 'presence');
+
+      return;
+    }
+
     if (!Number.isInteger(this.request.value)) {
       this.errors.add('value', 'format');
     }
+
+    this.value = this.request.value;
   }
 
   private squareValue({ value }: { value: number }) {

@@ -1,6 +1,6 @@
 {
   "name": "mr-use-case",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "A perfect way to wrap your business logic fast and properly.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,13 +11,14 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "build": "del dist && tsc",
-    "build:check": "tsc --noEmit",
+    "build": "del dist && tsc --project tsconfig.production.json",
+    "build:check": "tsc --noEmit --project tsconfig.production.json",
     "dot-only-hunter": "dot-only-hunter tests",
     "deploy": "npm run dot-only-hunter && npm run test:coverage && npm run build && npm publish"
   },
   "keywords": [
-    "usecase"
+    "usecase",
+    "typescript"
   ],
   "author": "Ilia Donskikh",
   "license": "ISC",

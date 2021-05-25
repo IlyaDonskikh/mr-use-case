@@ -68,7 +68,8 @@ interface Response {
 }
 
 export class UserCreateCase extends MrUseCase<Request, Response>() {
-  private position: UserPosition;
+  private position?: UserPosition;
+  private positionValidated: UserPosition;
 
   // process
 
@@ -79,10 +80,10 @@ export class UserCreateCase extends MrUseCase<Request, Response>() {
 
     const user = await User.create({
       email: this.request.email,
-      positionId: this.position.id,
+      positionId: this.positionValidated.id,
     });
 
-    this.response = { user };
+    return { user };
   }
 
   // private
@@ -98,7 +99,11 @@ export class UserCreateCase extends MrUseCase<Request, Response>() {
 
     if (!this.position) {
       this.errors.add('email', 'positionFind');
+
+      return;
     }
+
+    this.positionValidated = this.position;
   }
 
   private async assignVariables() {
