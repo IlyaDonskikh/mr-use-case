@@ -128,7 +128,8 @@ Keep in mind that one use case must fullfil only one business purpose and give a
 Now let's see how we may use it in the positive scenario:
 
 ```typescript
-const { user } = await UserCreateCase.call({ email: 'example@example.com' });
+const email = 'example@example.com';
+const { user } = await UserCreateCase.call({ email });
 
 return user; // => created user
 ```
@@ -136,8 +137,10 @@ return user; // => created user
 However, what happens if the passed value is not an email? Let's change our code and see.
 
 ```typescript
+const email = 'wrongemail';
+
 try {
-  const { user } = await UserCreateCase.call({ email: 'wrongemail' }); // => throw an exception
+  const { user } = await UserCreateCase.call({ email });
 } catch (err) {
   if (err instanceof MrError) {
     debug(err.errors.messages());
