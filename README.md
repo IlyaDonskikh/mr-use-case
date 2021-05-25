@@ -83,7 +83,7 @@ export class UserCreateCase extends MrUseCase<Request, Response>() {
       positionId: this.positionValidated.id,
     });
 
-    this.response = { user };
+    return { user };
   }
 
   // private
