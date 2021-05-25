@@ -1,14 +1,18 @@
 import { MrError } from 'mr-error';
 
+type ProcessReturn<R> = R extends object ? R : void;
+
 // have to define interface because declaration option is true
 export interface MrUseCaseInterface<T, R> {
   new (params: T): {
     request: T;
-    response: R;
     errors: MrError;
+    process(): Promise<ProcessReturn<R>>;
     validate(): Promise<void>;
   };
-  call(...params: T extends object ? [T] : [undefined?]): Promise<R>;
+  call(
+    ...params: T extends object ? [T] : [undefined?]
+  ): Promise<ProcessReturn<R>>;
 }
 
 export function MrUseCase<T extends object | null, R extends object | null>(
@@ -18,7 +22,6 @@ export function MrUseCase<T extends object | null, R extends object | null>(
 ): MrUseCaseInterface<T, R> {
   return class BaseUseCase {
     request: T = null as T;
-    response: R = null as R;
     errors: MrError;
 
     constructor(params: T = {} as T) {
@@ -42,14 +45,18 @@ export function MrUseCase<T extends object | null, R extends object | null>(
       }
     }
 
+    async process(): Promise<ProcessReturn<R>> {
+      return undefined as ProcessReturn<R>;
+    }
+
     private async call() {
       this.errors = new errorsBuilder({
         localePath: this.buildLocalePath(),
       });
 
-      await this.process();
+      const response = await this.process();
 
-      return this.response;
+      return response;
     }
 
     private buildLocalePath() {
@@ -65,6 +72,5 @@ export function MrUseCase<T extends object | null, R extends object | null>(
     }
 
     protected async checks() {}
-    protected async process() {}
   };
 }

@@ -11,12 +11,12 @@ interface Response {
 export class IntegerSquareCase extends MrUseCase<Request, Response>() {
   private value: number;
 
-  protected async process() {
+  async process() {
     await this.validate();
 
     const valueSquared = this.squareValue({ value: this.value });
 
-    this.response = { valueSquared };
+    return { valueSquared };
   }
 
   protected async checks() {

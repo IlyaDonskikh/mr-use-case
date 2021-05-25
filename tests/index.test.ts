@@ -40,7 +40,7 @@ describe('MrUseCase', () => {
       it('throw an error', async () => {
         const useCase = await NoParamsRunCase.call();
 
-        expect(useCase).toBeNull();
+        expect(useCase).toBeUndefined();
       });
     });
   });
