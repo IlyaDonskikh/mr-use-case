@@ -31,7 +31,7 @@ export function MrUseCase<
       this.request = params;
     }
 
-    static call(params: T = {} as T) {
+    static call(params: T = null as T) {
       const response = new this(params).call();
 
       return response;
