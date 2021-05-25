@@ -36,8 +36,8 @@ describe('MrUseCase', () => {
   });
 
   describe('NoParamsRunCase', () => {
-    describe('when not an object passed', () => {
-      it('throw an error', async () => {
+    describe('when nothing passed', () => {
+      it('done with no response', async () => {
         const useCase = await NoParamsRunCase.call();
 
         expect(useCase).toBeUndefined();

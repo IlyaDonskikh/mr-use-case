@@ -15,7 +15,10 @@ export interface MrUseCaseInterface<T, R> {
   ): Promise<ProcessReturn<R>>;
 }
 
-export function MrUseCase<T extends object | null, R extends object | null>(
+export function MrUseCase<
+  T extends object | null = null,
+  R extends object | null = null,
+>(
   { errorsBuilder }: { errorsBuilder: typeof MrError } = {
     errorsBuilder: MrError,
   },
@@ -24,7 +27,7 @@ export function MrUseCase<T extends object | null, R extends object | null>(
     request: T = null as T;
     errors: MrError;
 
-    constructor(params: T = {} as T) {
+    constructor(params: T) {
       this.request = params;
     }
 
