@@ -1,7 +1,14 @@
+import { MrUseCase } from '../src';
 import { IntegerSquareCase } from './samples/integerSquare.case';
 import { NoParamsRunCase } from './samples/noParamsRun.case';
 
 describe('MrUseCase', () => {
+  test('return undefined', async () => {
+    const value = await MrUseCase().call();
+
+    expect(value).toBeUndefined();
+  });
+
   describe('IntegerSquareCase', () => {
     test('square it', async () => {
       const value = 3;
